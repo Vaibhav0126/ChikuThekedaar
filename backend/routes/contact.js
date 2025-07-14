@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
       <p><strong>Message:</strong></p>
       <p>${message.replace(/\n/g, "<br>")}</p>
       <hr>
-      <p><em>This email was sent from the CHHIKARA CONSTRUCTIONS website contact form.</em></p>
+      <p><em>This email was sent from the CHHIKARA CONSTRUCTIONS contact form.</em></p>
     `;
 
     // Email content for the customer (auto-reply)
@@ -58,7 +58,7 @@ router.post("/", async (req, res) => {
       <p><strong>Emergency Line:</strong> +91 858890900</p>
       
       <p>Best regards,<br>
-      The CHHIKARA CONSTRUCTIONS Team</p>
+      Vishal Chhikara</p>
     `;
 
     // Send email to company
