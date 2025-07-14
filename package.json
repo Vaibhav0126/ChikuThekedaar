@@ -1,0 +1,27 @@
+{
+  "name": "construction-firm-website",
+  "version": "1.0.0",
+  "description": "Complete website for construction firm with admin panel",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run frontend:dev\" \"npm run backend:dev\"",
+    "frontend:dev": "cd frontend && npm start",
+    "backend:dev": "cd backend && npm run dev",
+    "frontend:install": "cd frontend && npm install",
+    "backend:install": "cd backend && npm install",
+    "install-all": "npm run frontend:install && npm run backend:install",
+    "build": "cd frontend && npm run build"
+  },
+  "keywords": [
+    "construction",
+    "website",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
