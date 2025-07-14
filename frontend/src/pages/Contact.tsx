@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { getApiUrl } from "../utils/api";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      await axios.post("http://localhost:5001/api/contact", formData);
+      await axios.post(getApiUrl("/api/contact"), formData);
       toast.success("Message sent successfully! We will get back to you soon.");
       setFormData({
         name: "",

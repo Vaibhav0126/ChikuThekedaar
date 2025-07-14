@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { getApiUrl } from "../utils/api";
 
 const AdminLogin: React.FC = () => {
   const [credentials, setCredentials] = useState({
@@ -24,7 +25,7 @@ const AdminLogin: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/auth/login",
+        getApiUrl("/api/auth/login"),
         credentials
       );
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { getApiUrl } from "../utils/api";
 import { constructImageUrl, handleImageError } from "../utils/imageUtils";
 
 interface Project {
@@ -17,19 +18,19 @@ const Projects: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await axios.get(getApiUrl("/api/projects"));
+        setProjects(response.data);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchProjects();
   }, []);
-
-  const fetchProjects = async () => {
-    try {
-      const response = await axios.get("http://localhost:5001/api/projects");
-      setProjects(response.data);
-    } catch (error) {
-      console.error("Error fetching projects:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading) {
     return (

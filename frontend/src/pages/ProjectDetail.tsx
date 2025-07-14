@@ -6,6 +6,7 @@ import {
   constructImageUrls,
   handleImageError,
 } from "../utils/imageUtils";
+import { getApiUrl } from "../utils/api";
 
 interface Project {
   _id: string;
@@ -30,24 +31,24 @@ const ProjectDetail: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string>("");
 
   useEffect(() => {
-    fetchProject();
-  }, [id]);
+    const fetchProject = async () => {
+      try {
+        const response = await axios.get(getApiUrl(`/api/projects/${id}`));
+        setProject(response.data);
+        const primaryImage =
+          response.data.images?.[0] || response.data.image || "";
+        setSelectedImage(constructImageUrl(primaryImage));
+      } catch (error) {
+        console.error("Error fetching project:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const fetchProject = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:5001/api/projects/${id}`
-      );
-      setProject(response.data);
-      const primaryImage =
-        response.data.images?.[0] || response.data.image || "";
-      setSelectedImage(constructImageUrl(primaryImage));
-    } catch (error) {
-      console.error("Error fetching project:", error);
-    } finally {
-      setLoading(false);
+    if (id) {
+      fetchProject();
     }
-  };
+  }, [id]);
 
   const getStatusColor = (status: string) => {
     switch (status) {

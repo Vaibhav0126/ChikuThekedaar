@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { getApiUrl, getApiBaseUrl } from "../utils/api";
 
 interface ImageUploadProps {
   onImagesUploaded: (urls: string[]) => void;
@@ -54,7 +55,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 
         const token = localStorage.getItem("adminToken");
         const response = await axios.post(
-          "http://localhost:5001/api/upload/multiple",
+          getApiUrl("/api/upload/multiple"),
           formData,
           {
             headers: {
@@ -66,7 +67,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 
         // Construct full URLs for the uploaded images
         const newUrls = response.data.urls.map((url: string) =>
-          url.startsWith("http") ? url : `http://localhost:5001${url}`
+          url.startsWith("http") ? url : `${getApiBaseUrl()}${url}`
         );
         const updatedImages = [...uploadedImages, ...newUrls];
         setUploadedImages(updatedImages);
@@ -121,7 +122,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       const filename = imageUrl.split("/").pop();
       if (filename) {
         const token = localStorage.getItem("adminToken");
-        await axios.delete(`http://localhost:5001/api/upload/${filename}`, {
+        await axios.delete(getApiUrl(`/api/upload/${filename}`), {
           headers: { Authorization: `Bearer ${token}` },
         });
       }

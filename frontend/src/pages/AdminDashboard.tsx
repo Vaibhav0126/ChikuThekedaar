@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import ImageUpload from "../components/ImageUpload";
+import { getApiUrl } from "../utils/api";
 
 interface Service {
   _id: string;
@@ -79,8 +80,8 @@ const AdminDashboard: React.FC = () => {
       };
 
       const [servicesRes, projectsRes] = await Promise.all([
-        axios.get("http://localhost:5001/api/services", config),
-        axios.get("http://localhost:5001/api/projects", config),
+        axios.get(getApiUrl("/api/services"), config),
+        axios.get(getApiUrl("/api/projects"), config),
       ]);
 
       setServices(servicesRes.data);
@@ -163,7 +164,7 @@ const AdminDashboard: React.FC = () => {
       };
 
       const endpoint = modalType === "service" ? "services" : "projects";
-      const url = `http://localhost:5001/api/${endpoint}`;
+      const url = getApiUrl(`/api/${endpoint}`);
 
       if (editingItem) {
         await axios.put(`${url}/${editingItem._id}`, formData, config);
@@ -198,7 +199,7 @@ const AdminDashboard: React.FC = () => {
       };
 
       const endpoint = type === "service" ? "services" : "projects";
-      await axios.delete(`http://localhost:5001/api/${endpoint}/${id}`, config);
+      await axios.delete(getApiUrl(`/api/${endpoint}/${id}`), config);
 
       toast.success(`${type} deleted successfully!`);
       fetchData();

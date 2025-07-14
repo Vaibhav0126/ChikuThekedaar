@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import { getApiUrl } from "../utils/api";
 
 interface Service {
   _id: string;
@@ -19,22 +20,22 @@ const ServiceDetail: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string>("");
 
   useEffect(() => {
-    fetchService();
-  }, [id]);
+    const fetchService = async () => {
+      try {
+        const response = await axios.get(getApiUrl(`/api/services/${id}`));
+        setService(response.data);
+        setSelectedImage(response.data.image || response.data.images[0] || "");
+      } catch (error) {
+        console.error("Error fetching service:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const fetchService = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:5001/api/services/${id}`
-      );
-      setService(response.data);
-      setSelectedImage(response.data.image || response.data.images[0] || "");
-    } catch (error) {
-      console.error("Error fetching service:", error);
-    } finally {
-      setLoading(false);
+    if (id) {
+      fetchService();
     }
-  };
+  }, [id]);
 
   if (loading) {
     return (
