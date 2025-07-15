@@ -29,6 +29,14 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    otp: {
+      type: String,
+      default: null,
+    },
+    otpExpires: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,
@@ -51,6 +59,33 @@ userSchema.pre("save", async function (next) {
 // Compare password method
 userSchema.methods.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
+};
+
+// Generate OTP
+userSchema.methods.generateOTP = function () {
+  const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6 digit OTP
+  this.otp = otp;
+  this.otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes from now
+  return otp;
+};
+
+// Verify OTP
+userSchema.methods.verifyOTP = function (candidateOTP) {
+  if (!this.otp || !this.otpExpires) {
+    return false;
+  }
+
+  if (new Date() > this.otpExpires) {
+    return false; // OTP expired
+  }
+
+  return this.otp === candidateOTP;
+};
+
+// Clear OTP
+userSchema.methods.clearOTP = function () {
+  this.otp = null;
+  this.otpExpires = null;
 };
 
 // Remove password from JSON output

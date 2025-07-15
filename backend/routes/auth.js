@@ -3,46 +3,139 @@ const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const User = require("../models/User");
 const auth = require("../middleware/auth");
+const { sendOTPEmail } = require("../utils/emailService");
 
 const router = express.Router();
 
-// @route   POST /api/auth/login
-// @desc    Login admin user
+// Rate limiting for login attempts
+const loginAttempts = new Map();
+
+const rateLimitLogin = (req, res, next) => {
+  const ip = req.ip || req.connection.remoteAddress;
+  const now = Date.now();
+  const windowMs = 15 * 60 * 1000; // 15 minutes
+  const maxAttempts = 5;
+
+  if (!loginAttempts.has(ip)) {
+    loginAttempts.set(ip, { count: 1, resetTime: now + windowMs });
+    return next();
+  }
+
+  const attempt = loginAttempts.get(ip);
+
+  if (now > attempt.resetTime) {
+    loginAttempts.set(ip, { count: 1, resetTime: now + windowMs });
+    return next();
+  }
+
+  if (attempt.count >= maxAttempts) {
+    return res.status(429).json({
+      message: "Too many login attempts. Please try again in 15 minutes.",
+    });
+  }
+
+  attempt.count++;
+  next();
+};
+
+// @route   POST /api/auth/request-otp
+// @desc    Request OTP for admin login (always sends to fixed admin email)
+// @access  Public
+router.post("/request-otp", rateLimitLogin, async (req, res) => {
+  try {
+    // Fixed admin email - no user input required for security
+    const adminEmail = "admin@chhikaraconstructions.com";
+
+    // Check if admin user exists
+    const user = await User.findOne({ email: adminEmail, role: "admin" });
+    if (!user) {
+      console.log(
+        `OTP request - admin user not found in database from IP: ${req.ip}`
+      );
+      return res.status(500).json({ message: "Admin account not configured" });
+    }
+
+    // Check if user is active
+    if (!user.isActive) {
+      console.log(`OTP request for deactivated admin from IP: ${req.ip}`);
+      return res.status(400).json({ message: "Account is deactivated" });
+    }
+
+    // Generate OTP
+    const otp = user.generateOTP();
+    await user.save();
+
+    // Send OTP to the fixed admin email (chhikaraconstructions@gmail.com)
+    const emailSent = await sendOTPEmail(
+      "chhikaraconstructions@gmail.com",
+      otp
+    );
+    if (!emailSent) {
+      return res.status(500).json({ message: "Failed to send OTP email" });
+    }
+
+    console.log(`OTP sent to admin email from IP: ${req.ip}`);
+    res.json({
+      message: "OTP sent to admin email address",
+      otpExpires: user.otpExpires,
+    });
+  } catch (error) {
+    console.error("Request OTP error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// @route   POST /api/auth/verify-otp
+// @desc    Verify OTP and login admin (uses fixed admin email)
 // @access  Public
 router.post(
-  "/login",
-  [
-    body("email").isEmail().normalizeEmail(),
-    body("password").isLength({ min: 6 }),
-  ],
+  "/verify-otp",
+  rateLimitLogin,
+  [body("otp").isLength({ min: 6, max: 6 }).isNumeric()],
   async (req, res) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({
-          message: "Invalid input data",
+          message: "Invalid OTP format",
           errors: errors.array(),
         });
       }
 
-      const { email, password } = req.body;
+      const { otp } = req.body;
 
-      // Check if user exists
-      const user = await User.findOne({ email });
+      // Fixed admin email - no user input required for security
+      const adminEmail = "admin@chhikaraconstructions.com";
+
+      // Find admin user
+      const user = await User.findOne({ email: adminEmail, role: "admin" });
       if (!user) {
-        return res.status(400).json({ message: "Invalid credentials" });
+        console.log(
+          `OTP verification - admin user not found in database from IP: ${req.ip}`
+        );
+        return res
+          .status(500)
+          .json({ message: "Admin account not configured" });
       }
 
       // Check if user is active
       if (!user.isActive) {
+        console.log(
+          `OTP verification for deactivated admin from IP: ${req.ip}`
+        );
         return res.status(400).json({ message: "Account is deactivated" });
       }
 
-      // Check password
-      const isMatch = await user.comparePassword(password);
-      if (!isMatch) {
-        return res.status(400).json({ message: "Invalid credentials" });
+      // Verify OTP
+      const isValidOTP = user.verifyOTP(otp);
+      if (!isValidOTP) {
+        console.log(`Invalid OTP attempt from IP: ${req.ip}`);
+        return res.status(400).json({ message: "Invalid or expired OTP" });
       }
+
+      // Clear OTP after successful verification
+      user.clearOTP();
+      await user.save();
 
       // Generate JWT token
       const payload = {
@@ -57,6 +150,8 @@ router.post(
         { expiresIn: "7d" }
       );
 
+      console.log(`Successful OTP login from IP: ${req.ip}`);
+
       res.json({
         token,
         user: {
@@ -67,11 +162,14 @@ router.post(
         },
       });
     } catch (error) {
-      console.error("Login error:", error);
+      console.error("Verify OTP error:", error);
       res.status(500).json({ message: "Server error" });
     }
   }
 );
+
+// Password-based login removed for security
+// Only OTP-based authentication is supported
 
 // @route   POST /api/auth/register
 // @desc    Register admin user (for initial setup)
