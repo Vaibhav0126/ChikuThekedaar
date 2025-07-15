@@ -312,7 +312,7 @@ const About: React.FC = () => {
                   <p className="text-primary-600 mb-3">Labour</p>
                 </div>
                 <p className="text-gray-600">
-                  Bringing the best out of the best.
+                  Bringing the best out of the best. Very cheap and very good.
                 </p>
               </div>
             </div>
