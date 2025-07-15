@@ -64,7 +64,7 @@ const AdminLogin: React.FC = () => {
       if (response.data.token) {
         localStorage.setItem("adminToken", response.data.token);
         toast.success("Login successful!");
-        navigate("/secure-panel-x9k2m");
+        navigate("/admin");
       }
     } catch (error: any) {
       toast.error(error.response?.data?.message || "Invalid OTP");
