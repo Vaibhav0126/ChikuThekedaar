@@ -15,6 +15,7 @@ app.use(
       "https://chhikaraconstructions.in",
       "https://www.chhikaraconstructions.in",
       "http://localhost:3000", // for development
+      /https:\/\/.*\.vercel\.app$/, // Allow all Vercel deployments
     ],
     credentials: true,
   })
