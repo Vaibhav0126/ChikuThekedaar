@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Layout from "./components/Layout";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
@@ -16,6 +17,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Toaster position="top-right" />
         <Routes>
