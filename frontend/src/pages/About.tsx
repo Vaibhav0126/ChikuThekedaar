@@ -232,9 +232,9 @@ const About: React.FC = () => {
                   <p className="text-primary-600 mb-3">CTO</p>
                 </div>
                 <p className="text-gray-600">
-                  With 2 years of experience in full-stack development and a
-                  background as a software engineer in Japan, Vaibhav now leads
-                  the tech vision at Chhikara Constructions.
+                  With experience in full-stack development and a background as
+                  a software engineer in Japan, Vaibhav now leads the tech
+                  vision at Chhikara Constructions.
                 </p>
               </div>
             </div>
