@@ -171,17 +171,9 @@ const About: React.FC = () => {
                       Vishal Chhikara
                     </h3>
                     <div className="flex space-x-3">
-                      {/* Instagram */}
-                      <a
-                        href="#"
-                        className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
-                        aria-label="Instagram"
-                      >
-                        <InstagramIcon className="h-5 w-5" />
-                      </a>
                       {/* LinkedIn */}
                       <a
-                        href="#"
+                        href="https://www.linkedin.com/in/vishal-chhikara-2b1544260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                         className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
                         aria-label="LinkedIn"
                       >
@@ -211,14 +203,6 @@ const About: React.FC = () => {
                       Vaibhav
                     </h3>
                     <div className="flex space-x-3">
-                      {/* Instagram */}
-                      <a
-                        href="#"
-                        className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
-                        aria-label="Instagram"
-                      >
-                        <InstagramIcon className="h-5 w-5" />
-                      </a>
                       {/* LinkedIn */}
                       <a
                         href="#"
@@ -252,17 +236,9 @@ const About: React.FC = () => {
                       Rimjhim Keer
                     </h3>
                     <div className="flex space-x-3">
-                      {/* Instagram */}
-                      <a
-                        href="#"
-                        className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
-                        aria-label="Instagram"
-                      >
-                        <InstagramIcon className="h-5 w-5" />
-                      </a>
                       {/* LinkedIn */}
                       <a
-                        href="#"
+                        href="https://in.linkedin.com/in/rimjhimkeer"
                         className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
                         aria-label="LinkedIn"
                       >
