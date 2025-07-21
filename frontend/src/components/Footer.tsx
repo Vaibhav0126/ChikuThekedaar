@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { ReactComponent as LocationIcon } from "../assets/logos/location.svg";
 import { ReactComponent as PhoneIcon } from "../assets/logos/phone.svg";
 import { ReactComponent as EmailIcon } from "../assets/logos/email.svg";
-import { ReactComponent as TwitterIcon } from "../assets/logos/twitter.svg";
-import { ReactComponent as FacebookIcon } from "../assets/logos/facebook.svg";
 import { ReactComponent as LinkedInIcon } from "../assets/logos/linkedin.svg";
+import { ReactComponent as InstagramIcon } from "../assets/logos/instagram.svg";
 
 const Footer: React.FC = () => {
   return (
@@ -22,17 +21,13 @@ const Footer: React.FC = () => {
               passion.
             </p>
             <div className="flex space-x-4">
+              {/* Instagram */}
               <a
-                href="#"
+                href="https://www.instagram.com/chhikara_constructions?igsh=MWdpMmYxYjhiODljeg=="
                 className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
+                aria-label="Instagram"
               >
-                <TwitterIcon className="h-6 w-6" />
-              </a>
-              <a
-                href="#"
-                className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
-              >
-                <FacebookIcon className="h-6 w-6" />
+                <InstagramIcon className="h-5 w-5" />
               </a>
               <a
                 href="#"

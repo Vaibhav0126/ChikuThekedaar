@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/logos/logo.svg";
+import { ReactComponent as Phone } from "../assets/logos/phone.svg";
+import { ReactComponent as Mail } from "../assets/logos/email.svg";
+import { ReactComponent as MapPin } from "../assets/logos/location.svg";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +21,27 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-neutral-900 shadow-lg sticky top-0 z-50">
+      <div className="bg-gradient-to-r from-primary-800 to-primary-700 text-white py-3 border-b-2 border-orange-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center text-sm">
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-2 hover:text-orange-300 transition-colors">
+                <Phone className="h-4 w-4 text-orange-400" />
+                <span>+91 858890900</span>
+              </div>
+              <div className="hidden sm:block w-px h-4 bg-orange-400"></div>
+              <div className="flex items-center space-x-2 hover:text-orange-300 transition-colors">
+                <Mail className="h-4 w-4 text-orange-400" />
+                <span>chhikaraconstructions@gmail.com</span>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2 hover:text-orange-300 transition-colors">
+              <MapPin className="h-4 w-4 text-orange-400" />
+              <span>Delhi NCR & Haryana</span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
