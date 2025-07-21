@@ -368,7 +368,7 @@ const Contact: React.FC = () => {
                 D-1, Baraf Khana Road, Jhajjar-124103, Haryana
               </p>
               <a
-                href={`https://www.google.com/maps/dir/?api=1&destination=28.606333698530907,76.65067144446272`}
+                href={`https://www.google.com/maps/dir/?api=1&destination=28.605909449320787, 76.65138041073916`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-4 py-2 bg-accent-orange-500 text-white rounded-lg hover:bg-accent-orange-600 transition-colors"

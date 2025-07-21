@@ -278,44 +278,6 @@ const About: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img
-                src={require("../assets/images/manit.jpg")}
-                alt="Manit Kumar"
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-6">
-                <div className="mb-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                    <h3 className="text-xl font-semibold mb-2 sm:mb-0">
-                      Manit Kumar
-                    </h3>
-                    <div className="flex space-x-3">
-                      {/* Instagram */}
-                      <a
-                        href="#"
-                        className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
-                        aria-label="Instagram"
-                      >
-                        <InstagramIcon className="h-5 w-5" />
-                      </a>
-                      {/* LinkedIn */}
-                      <a
-                        href="#"
-                        className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
-                        aria-label="LinkedIn"
-                      >
-                        <LinkedInIcon className="h-5 w-5" />
-                      </a>
-                    </div>
-                  </div>
-                  <p className="text-primary-600 mb-3">Labour</p>
-                </div>
-                <p className="text-gray-600">
-                  Bringing the best out of the best. Very cheap and very good.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
