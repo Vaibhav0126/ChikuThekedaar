@@ -136,20 +136,20 @@ const Header: React.FC = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-accent-orange-400 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent-orange-500"
+                className="inline-flex items-center justify-center p-2 rounded-lg text-white bg-neutral-800/50 hover:bg-orange-500/20 hover:text-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-200 backdrop-blur-sm border border-neutral-700/50"
+                aria-label="Toggle main menu"
               >
-                <span className="sr-only">Open main menu</span>
                 {!isMenuOpen ? (
                   <svg
                     className="block h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    strokeWidth={2}
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2}
                       d="M4 6h16M4 12h16M4 18h16"
                     />
                   </svg>
@@ -159,11 +159,11 @@ const Header: React.FC = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    strokeWidth={2}
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2}
                       d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
@@ -175,22 +175,46 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-primary-600 border-t border-primary-500">
-              {navItems.map((item) => (
+          <div className="md:hidden animate-in slide-in-from-top duration-200">
+            <div className="px-4 pt-4 pb-6 space-y-3 bg-gradient-to-b from-neutral-800 to-neutral-900 border-t border-orange-500/30 shadow-xl">
+              {navItems.map((item, index) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  className={`block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 transform hover:scale-105 ${
                     isActive(item.path)
-                      ? "text-accent-orange-500 bg-primary-700"
-                      : "text-white hover:text-accent-orange-400 hover:bg-primary-700"
+                      ? "text-orange-400 bg-gradient-to-r from-orange-500/20 to-orange-600/20 border-l-4 border-orange-400 shadow-lg"
+                      : "text-white hover:text-orange-300 hover:bg-gradient-to-r hover:from-neutral-700/50 hover:to-neutral-600/50 border-l-4 border-transparent hover:border-orange-500/50"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
+                  style={{
+                    animationDelay: `${index * 50}ms`,
+                  }}
                 >
-                  {item.label}
+                  <div className="flex items-center space-x-3">
+                    <div
+                      className={`w-2 h-2 rounded-full ${
+                        isActive(item.path) ? "bg-orange-400" : "bg-neutral-500"
+                      } transition-colors duration-200`}
+                    ></div>
+                    <span>{item.label}</span>
+                  </div>
                 </Link>
               ))}
+
+              {/* Mobile Contact Info */}
+              <div className="pt-4 mt-4 border-t border-neutral-700/50">
+                <div className="px-4 py-2">
+                  <p className="text-xs text-neutral-400 mb-2">Quick Contact</p>
+                  <a
+                    href="tel:+918588890900"
+                    className="flex items-center space-x-2 text-orange-300 hover:text-orange-200 transition-colors duration-200 active:scale-95 transform"
+                  >
+                    <Phone className="h-3 w-3" />
+                    <span className="text-sm">+91 8588890900</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         )}
