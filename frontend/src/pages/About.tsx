@@ -225,7 +225,7 @@ const About: React.FC = () => {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src={require("../assets/images/kuki.jpeg")}
+                src={require("../assets/images/kuki.jpg")}
                 alt="Saijal"
                 className="w-full h-64 object-cover"
               />
