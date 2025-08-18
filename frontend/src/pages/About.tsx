@@ -225,20 +225,20 @@ const About: React.FC = () => {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src={require("../assets/images/Rim.jpeg")}
-                alt="Rimjhim Keer"
+                src={require("../assets/images/kuki.jpeg")}
+                alt="Saijal"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6">
                 <div className="mb-3">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                     <h3 className="text-xl font-semibold mb-2 sm:mb-0">
-                      Rimjhim Keer
+                      Saijal
                     </h3>
                     <div className="flex space-x-3">
                       {/* LinkedIn */}
                       <a
-                        href="https://in.linkedin.com/in/rimjhimkeer"
+                        href="https://in.linkedin.com/in/"
                         className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
                         aria-label="LinkedIn"
                       >
@@ -246,11 +246,11 @@ const About: React.FC = () => {
                       </a>
                     </div>
                   </div>
-                  <p className="text-primary-600 mb-3">UI/UX Designer</p>
+                  <p className="text-primary-600 mb-3">Legal Advisor</p>
                 </div>
                 <p className="text-gray-600">
-                  Rimjhim enhances the company's digital and spatial experiences
-                  through thoughtful UI/UX and design improvements.
+                  Provides legal guidance with a sharp mind and passion for
+                  travel.
                 </p>
               </div>
             </div>
