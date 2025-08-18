@@ -259,7 +259,7 @@ const About: React.FC = () => {
                       </a>
                     </div>
                   </div>
-                  <p className="text-primary-600 mb-3">CTO</p>
+                  <p className="text-primary-600 mb-3">Digital Strategist</p>
                 </div>
                 <p className="text-gray-600">
                   With experience in full-stack development and a background as
