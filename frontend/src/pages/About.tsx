@@ -298,8 +298,9 @@ const About: React.FC = () => {
                   <p className="text-primary-600 mb-3">Legal Advisor</p>
                 </div>
                 <p className="text-gray-600">
-                  Provides legal guidance with a sharp mind and passion for
-                  travel.
+                  An excellent lawyer with exceptional legal expertise and a
+                  sharp analytical mind. Provides comprehensive legal guidance
+                  with remarkable attention to detail.
                 </p>
               </div>
             </div>
