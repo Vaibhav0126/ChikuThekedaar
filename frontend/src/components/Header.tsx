@@ -78,21 +78,24 @@ const Header: React.FC = () => {
           }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center text-sm">
-              <div className="flex items-center space-x-6">
-                <div className="flex items-center space-x-2 hover:text-orange-300 transition-colors">
-                  <Phone className="h-4 w-4 text-orange-400" />
+            <div className="flex justify-between items-center text-xs sm:text-sm">
+              <div className="flex items-center space-x-3 sm:space-x-6">
+                <div className="flex items-center space-x-1 sm:space-x-2 hover:text-orange-300 transition-colors">
+                  <Phone className="h-3 w-3 sm:h-4 sm:w-4 text-orange-400" />
                   <span>+91 8588890900</span>
                 </div>
                 <div className="hidden sm:block w-px h-4 bg-orange-400"></div>
-                <div className="flex items-center space-x-2 hover:text-orange-300 transition-colors">
-                  <Mail className="h-4 w-4 text-orange-400" />
-                  <span>chhikaraconstructions@gmail.com</span>
+                <div className="hidden md:flex items-center space-x-1 sm:space-x-2 hover:text-orange-300 transition-colors">
+                  <Mail className="h-3 w-3 sm:h-4 sm:w-4 text-orange-400" />
+                  <span className="truncate max-w-[160px] lg:max-w-none">
+                    chhikaraconstructions@gmail.com
+                  </span>
                 </div>
               </div>
-              <div className="flex items-center space-x-2 hover:text-orange-300 transition-colors">
-                <MapPin className="h-4 w-4 text-orange-400" />
-                <span>Delhi NCR & Haryana</span>
+              <div className="flex items-center space-x-1 sm:space-x-2 hover:text-orange-300 transition-colors">
+                <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-orange-400" />
+                <span className="hidden sm:inline">Delhi NCR & Haryana</span>
+                <span className="sm:hidden">Delhi NCR</span>
               </div>
             </div>
           </div>
