@@ -57,7 +57,7 @@ const Home: React.FC = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section
-        className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20 lg:py-32"
+        className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-12 sm:py-20 lg:py-32"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction1})`,
           backgroundSize: "cover",
@@ -67,25 +67,25 @@ const Home: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center animate-fade-in-up">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-shadow-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-shadow-lg leading-tight">
               Building Your Dreams <br />
               <span className="bg-gradient-to-r from-accent-orange-400 to-accent-beige-400 bg-clip-text text-transparent animate-gradient">
                 With Excellence
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-gray-100 max-w-4xl mx-auto leading-relaxed animate-fade-in-up-delay">
+            <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-10 text-gray-100 max-w-4xl mx-auto leading-relaxed animate-fade-in-up-delay px-2">
               Crafting structures that last a lifetime — with precision,
               passion, and professional expertise across Delhi NCR & Haryana.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up-delay-2">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center animate-fade-in-up-delay-2 px-4">
               <Link
                 to="/projects"
-                className="group relative bg-gradient-to-r from-accent-orange-500 to-accent-orange-600 text-white px-10 py-4 rounded-xl font-semibold transition-all duration-300 shadow-2xl hover:shadow-orange-500/30 hover:scale-105 text-lg transform hover:-translate-y-1"
+                className="group relative bg-gradient-to-r from-accent-orange-500 to-accent-orange-600 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-300 shadow-2xl hover:shadow-orange-500/30 hover:scale-105 text-base sm:text-lg transform hover:-translate-y-1 w-full sm:w-auto text-center"
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center justify-center gap-2">
                   View Our Projects
                   <svg
-                    className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                    className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -102,12 +102,12 @@ const Home: React.FC = () => {
               </Link>
               <Link
                 to="/services"
-                className="group relative border-2 border-accent-beige-400 text-accent-beige-400 px-10 py-4 rounded-xl font-semibold transition-all duration-300 hover:bg-accent-beige-400 hover:text-neutral-900 hover:scale-105 text-lg backdrop-blur-sm bg-white/10 shadow-xl hover:shadow-beige-500/20 transform hover:-translate-y-1"
+                className="group relative border-2 border-accent-beige-400 text-accent-beige-400 px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-300 hover:bg-accent-beige-400 hover:text-neutral-900 hover:scale-105 text-base sm:text-lg backdrop-blur-sm bg-white/10 shadow-xl hover:shadow-beige-500/20 transform hover:-translate-y-1 w-full sm:w-auto text-center"
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center justify-center gap-2">
                   Our Services
                   <svg
-                    className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                    className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -127,7 +127,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gradient-to-br from-accent-beige-50 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-accent-beige-50 to-white relative overflow-hidden">
         {/* Background decoration */}
         <div
           className="absolute inset-0 opacity-30"
@@ -137,19 +137,19 @@ const Home: React.FC = () => {
         ></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 relative">
+          <div className="text-center mb-8 sm:mb-16 px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 relative">
               Why Choose Chhikara Constructions?
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-24 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               We deliver exceptional construction services with a commitment to
               quality, safety, and customer satisfaction.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-primary-200 relative overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-4">
+            <div className="group bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-primary-200 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative z-10">
                 <div className="bg-gradient-to-br from-primary-500 to-primary-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">

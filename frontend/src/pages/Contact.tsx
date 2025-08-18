@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
       <div
-        className="relative bg-primary-600 text-white py-20 lg:py-28"
+        className="relative bg-primary-600 text-white py-12 sm:py-20 lg:py-28"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction5})`,
           backgroundSize: "cover",
@@ -64,11 +64,11 @@ const Contact: React.FC = () => {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-shadow-lg">
+          <div className="text-center animate-fade-in-up px-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-shadow-lg leading-tight">
               Get In Touch
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
               Have a construction project in mind? We'd love to hear from you.
               Send us a message and we'll get back to you as soon as possible.
             </p>
@@ -77,7 +77,7 @@ const Contact: React.FC = () => {
       </div>
 
       {/* Contact Section */}
-      <div className="py-20 bg-gradient-to-br from-accent-beige-50 to-white relative overflow-hidden">
+      <div className="py-12 sm:py-20 bg-gradient-to-br from-accent-beige-50 to-white relative overflow-hidden">
         {/* Background decoration */}
         <div
           className="absolute inset-0 opacity-30"
@@ -87,15 +87,15 @@ const Contact: React.FC = () => {
         ></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 relative">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 relative">
                   Contact Information
-                  <div className="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
+                  <div className="absolute -bottom-2 left-0 w-16 sm:w-20 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
                 </h2>
-                <p className="text-gray-600 mb-8 leading-relaxed text-lg">
+                <p className="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg">
                   Ready to start your construction project? Get in touch with
                   our team of experts.
                 </p>
@@ -158,7 +158,7 @@ const Contact: React.FC = () => {
                       Phone
                     </h3>
                     <p className="text-gray-600">
-                      +91 858890900
+                      +91 8588890900
                       <br />
                       +91 8572072364
                     </p>
@@ -232,16 +232,16 @@ const Contact: React.FC = () => {
                   emergency line:
                 </p>
                 <p className="text-primary-600 font-semibold text-lg">
-                  +91 858890900
+                  +91 8588890900
                 </p>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/50">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 relative">
+            <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-8 rounded-2xl shadow-2xl border border-white/50">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 relative">
                 Send us a Message
-                <div className="absolute -bottom-2 left-0 w-16 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
+                <div className="absolute -bottom-2 left-0 w-12 sm:w-16 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">

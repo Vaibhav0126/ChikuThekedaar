@@ -262,7 +262,7 @@ const ServiceDetail: React.FC = () => {
                   Get Free Quote
                 </Link>
                 <a
-                  href="tel:+918588909000"
+                  href="tel:+918588890900"
                   className="border border-accent-orange-500 text-accent-orange-500 px-6 py-2 rounded-lg hover:bg-accent-orange-500 hover:text-white transition-colors text-center"
                 >
                   Call Now

@@ -48,7 +48,7 @@ const Projects: React.FC = () => {
     <div className="min-h-screen bg-neutral-50">
       {/* Header Section */}
       <section
-        className="relative bg-primary-600 text-white py-20 lg:py-28"
+        className="relative bg-primary-600 text-white py-12 sm:py-20 lg:py-28"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction4})`,
           backgroundSize: "cover",
@@ -57,11 +57,11 @@ const Projects: React.FC = () => {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-shadow-lg">
+          <div className="text-center animate-fade-in-up px-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-shadow-lg leading-tight">
               Our Projects
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
               Explore our portfolio of successful construction projects. Each
               project showcases our commitment to quality, innovation, and
               client satisfaction.
@@ -71,7 +71,7 @@ const Projects: React.FC = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 bg-gradient-to-br from-accent-beige-50 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-accent-beige-50 to-white relative overflow-hidden">
         {/* Background decoration */}
         <div
           className="absolute inset-0 opacity-30"
@@ -109,17 +109,17 @@ const Projects: React.FC = () => {
             </div>
           ) : (
             <>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 relative">
+              <div className="text-center mb-8 sm:mb-16 px-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 relative">
                   Our Construction Portfolio
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-24 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
                 </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                   Discover our completed projects and see the quality of our
                   construction work
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
                 {projects.map((project) => (
                   <div
                     key={project._id}

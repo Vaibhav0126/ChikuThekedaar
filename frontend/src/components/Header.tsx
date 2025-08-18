@@ -82,7 +82,7 @@ const Header: React.FC = () => {
               <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-2 hover:text-orange-300 transition-colors">
                   <Phone className="h-4 w-4 text-orange-400" />
-                  <span>+91 858890900</span>
+                  <span>+91 8588890900</span>
                 </div>
                 <div className="hidden sm:block w-px h-4 bg-orange-400"></div>
                 <div className="flex items-center space-x-2 hover:text-orange-300 transition-colors">

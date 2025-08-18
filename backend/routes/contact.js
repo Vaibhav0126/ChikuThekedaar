@@ -52,10 +52,10 @@ router.post("/", async (req, res) => {
       
       <hr>
       <h3>Contact Information:</h3>
-      <p><strong>Phone:</strong> +91 858890900, +91 8572072364</p>
+      <p><strong>Phone:</strong> +91 8588890900, +91 8572072364</p>
       <p><strong>Email:</strong> chhikaraconstructions@gmail.com</p>
       <p><strong>Address:</strong> D-1, Baraf Khana Road, Jhajjar-124103, Haryana</p>
-      <p><strong>Emergency Line:</strong> +91 858890900</p>
+      <p><strong>Emergency Line:</strong> +91 8588890900</p>
       
       <p>Best regards,<br>
       Vishal Chhikara</p>

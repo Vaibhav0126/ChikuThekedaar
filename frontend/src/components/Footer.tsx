@@ -17,8 +17,8 @@ const Footer: React.FC = () => {
         }}
       ></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-1">
             <div className="mb-6">
@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
                 <PhoneIcon className="w-4 h-4 " />
 
                 <span className="text-neutral-400 group-hover:text-white transition-colors duration-300 ml-3">
-                  +91 858890900
+                  +91 8588890900
                 </span>
               </li>
               <li className="flex items-start">

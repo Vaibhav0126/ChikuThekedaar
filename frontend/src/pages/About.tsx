@@ -11,7 +11,7 @@ const About: React.FC = () => {
     <div className="min-h-screen bg-neutral-50">
       {/* Header Section */}
       <section
-        className="relative bg-primary-600 text-white py-20 lg:py-28"
+        className="relative bg-primary-600 text-white py-12 sm:py-20 lg:py-28"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction2})`,
           backgroundSize: "cover",
@@ -20,11 +20,11 @@ const About: React.FC = () => {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-shadow-lg">
+          <div className="text-center animate-fade-in-up px-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-shadow-lg leading-tight">
               About CHHIKARA CONSTRUCTIONS
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
               Building excellence for over two decades with passion, precision,
               and professionalism.
             </p>
@@ -33,7 +33,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Company Story */}
-      <section className="py-20 bg-gradient-to-br from-accent-beige-50 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-accent-beige-50 to-white relative overflow-hidden">
         {/* Background decoration */}
         <div
           className="absolute inset-0 opacity-30"
@@ -96,7 +96,7 @@ const About: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-primary-200 relative overflow-hidden">
+            <div className="group bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-primary-200 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative z-10">
                 <div className="bg-gradient-to-br from-primary-500 to-primary-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
