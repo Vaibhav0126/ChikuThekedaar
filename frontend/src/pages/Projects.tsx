@@ -4,6 +4,10 @@ import axios from "axios";
 import { getApiUrl } from "../utils/api";
 import { constructImageUrl, handleImageError } from "../utils/imageUtils";
 
+// Import construction images for backgrounds
+import construction4 from "../assets/images/construction-4.jpg";
+import construction9 from "../assets/images/construction-9.jpg";
+
 interface Project {
   _id: string;
   title: string;
@@ -43,7 +47,15 @@ const Projects: React.FC = () => {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Header Section */}
-      <section className="bg-primary-600 text-white py-16">
+      <section
+        className="relative bg-primary-600 text-white py-16"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction4})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -111,7 +123,15 @@ const Projects: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-primary-600 text-white py-16">
+      <section
+        className="relative bg-primary-600 text-white py-16"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction9})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Start Your Next Project?

@@ -4,6 +4,10 @@ import axios from "axios";
 import { getApiUrl } from "../utils/api";
 import { constructImageUrl, handleImageError } from "../utils/imageUtils";
 
+// Import construction images for backgrounds
+import construction1 from "../assets/images/construction-1.jpg";
+import construction6 from "../assets/images/construction-6.jpg";
+
 interface Service {
   _id: string;
   title: string;
@@ -52,7 +56,15 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20 lg:py-32">
+      <section
+        className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20 lg:py-32"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction1})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
@@ -261,7 +273,15 @@ const Home: React.FC = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-primary-600 text-white">
+      <section
+        className="relative py-20 bg-primary-600 text-white"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction6})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -436,7 +456,7 @@ const Home: React.FC = () => {
             </div>
           )}
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 mb-6">
             <Link
               to="/projects"
               className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold"

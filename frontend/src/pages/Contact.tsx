@@ -3,6 +3,10 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { getApiUrl } from "../utils/api";
 
+// Import construction images for backgrounds
+import construction5 from "../assets/images/construction-5.jpg";
+import construction10 from "../assets/images/construction-10.jpg";
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -50,7 +54,15 @@ const Contact: React.FC = () => {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <div className="bg-primary-600 text-white py-20">
+      <div
+        className="relative bg-primary-600 text-white py-20"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction5})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -336,7 +348,15 @@ const Contact: React.FC = () => {
       </div>
 
       {/* Map Section (Optional - can be replaced with actual map) */}
-      <div className="bg-accent-beige-50 py-16">
+      <div
+        className="relative py-16"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${construction10})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">

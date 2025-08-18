@@ -1,13 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as InstagramIcon } from "../assets/logos/instagram.svg";
 import { ReactComponent as LinkedInIcon } from "../assets/logos/linkedin.svg";
+
+// Import construction images for backgrounds
+import construction2 from "../assets/images/construction-2.jpg";
+import construction7 from "../assets/images/construction-7.jpg";
 
 const About: React.FC = () => {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Header Section */}
-      <section className="bg-primary-600 text-white py-16">
+      <section
+        className="relative bg-primary-600 text-white py-16"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction2})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -205,7 +216,7 @@ const About: React.FC = () => {
                     <div className="flex space-x-3">
                       {/* LinkedIn */}
                       <a
-                        href="#"
+                        href="https://www.linkedin.com/in/vaibhav-chhikara"
                         className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
                         aria-label="LinkedIn"
                       >
@@ -259,7 +270,15 @@ const About: React.FC = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 bg-primary-600 text-white">
+      <section
+        className="relative py-20 bg-primary-600 text-white"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction7})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Work With Us?
