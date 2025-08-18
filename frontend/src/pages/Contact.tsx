@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
       <div
-        className="relative bg-primary-600 text-white py-20"
+        className="relative bg-primary-600 text-white py-20 lg:py-28"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${construction5})`,
           backgroundSize: "cover",
@@ -64,11 +64,11 @@ const Contact: React.FC = () => {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="text-center animate-fade-in-up">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-shadow-lg">
               Get In Touch
             </h1>
-            <p className="text-xl text-primary-100 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
               Have a construction project in mind? We'd love to hear from you.
               Send us a message and we'll get back to you as soon as possible.
             </p>
@@ -77,16 +77,25 @@ const Contact: React.FC = () => {
       </div>
 
       {/* Contact Section */}
-      <div className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-20 bg-gradient-to-br from-accent-beige-50 to-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f4a261' fill-opacity='0.03'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        ></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 relative">
                   Contact Information
+                  <div className="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
                 </h2>
-                <p className="text-gray-600 mb-8">
+                <p className="text-gray-600 mb-8 leading-relaxed text-lg">
                   Ready to start your construction project? Get in touch with
                   our team of experts.
                 </p>
@@ -131,7 +140,7 @@ const Contact: React.FC = () => {
                 <div className="flex items-start space-x-4">
                   <div className="bg-primary-100 p-3 rounded-lg">
                     <svg
-                      className="w-6 h-6 text-primary-600"
+                      className="w-6 h-6"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -229,9 +238,10 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/50">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 relative">
                 Send us a Message
+                <div className="absolute -bottom-2 left-0 w-16 h-1 bg-gradient-to-r from-accent-orange-500 to-accent-beige-500 rounded-full"></div>
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -330,9 +340,27 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-accent-orange-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-accent-orange-600 focus:ring-2 focus:ring-accent-orange-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="group relative w-full bg-gradient-to-r from-accent-orange-500 to-accent-orange-600 text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-2xl hover:shadow-orange-500/30 hover:scale-105 focus:ring-2 focus:ring-accent-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
                 >
-                  {isSubmitting ? "Sending Message..." : "Send Message"}
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    {isSubmitting ? "Sending Message..." : "Send Message"}
+                    {!isSubmitting && (
+                      <svg
+                        className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                        />
+                      </svg>
+                    )}
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent-orange-600 to-accent-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
                 </button>
               </form>
 
