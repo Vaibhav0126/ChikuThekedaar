@@ -24,23 +24,46 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     if (JSON.stringify(existingImages) !== JSON.stringify(uploadedImages)) {
       setUploadedImages(existingImages);
     }
-  }, [existingImages]);
+  }, [existingImages, uploadedImages]);
 
   const handleFiles = useCallback(
     async (files: FileList) => {
       const fileArray = Array.from(files);
 
-      // Filter only image files
-      const imageFiles = fileArray.filter((file) =>
-        file.type.startsWith("image/")
-      );
+      // Check for valid image formats (PNG, JPG, JPEG only)
+      const allowedTypes = ["image/png", "image/jpg", "image/jpeg"];
+      const validFiles: File[] = [];
+      const invalidFiles: string[] = [];
 
-      if (imageFiles.length === 0) {
-        toast.error("Please select only image files");
+      fileArray.forEach((file) => {
+        if (allowedTypes.includes(file.type.toLowerCase())) {
+          // Check file size (5MB limit)
+          if (file.size <= 5 * 1024 * 1024) {
+            validFiles.push(file);
+          } else {
+            invalidFiles.push(`${file.name} (too large, max 5MB)`);
+          }
+        } else {
+          invalidFiles.push(`${file.name} (only PNG, JPG, JPEG allowed)`);
+        }
+      });
+
+      // Show specific errors for invalid files
+      if (invalidFiles.length > 0) {
+        toast.error(`Invalid files: ${invalidFiles.join(", ")}`);
+        if (validFiles.length === 0) {
+          return;
+        }
+      }
+
+      if (validFiles.length === 0) {
+        toast.error(
+          "Please select valid image files (PNG, JPG, JPEG only, max 5MB each)"
+        );
         return;
       }
 
-      if (uploadedImages.length + imageFiles.length > maxFiles) {
+      if (uploadedImages.length + validFiles.length > maxFiles) {
         toast.error(`You can only upload up to ${maxFiles} images`);
         return;
       }
@@ -49,7 +72,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 
       try {
         const formData = new FormData();
-        imageFiles.forEach((file) => {
+        validFiles.forEach((file) => {
           formData.append("images", file);
         });
 
@@ -118,22 +141,35 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 
   const removeImage = async (imageUrl: string, index: number) => {
     try {
-      // Extract filename from URL
-      const filename = imageUrl.split("/").pop();
-      if (filename) {
-        const token = localStorage.getItem("adminToken");
-        await axios.delete(getApiUrl(`/api/upload/${filename}`), {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-      }
-
+      // Always remove from UI first
       const updatedImages = uploadedImages.filter((_, i) => i !== index);
       setUploadedImages(updatedImages);
       onImagesUploaded(updatedImages);
+
+      // Try to delete from server if it's a server-hosted image
+      if (imageUrl.includes("/uploads/")) {
+        const filename = imageUrl.split("/").pop();
+        if (filename) {
+          try {
+            const token = localStorage.getItem("adminToken");
+            await axios.delete(getApiUrl(`/api/upload/${filename}`), {
+              headers: { Authorization: `Bearer ${token}` },
+            });
+          } catch (deleteError: any) {
+            // Log the error but don't show it to user since image is already removed from UI
+            console.warn(
+              "Failed to delete file from server:",
+              deleteError.response?.data?.message || deleteError.message
+            );
+          }
+        }
+      }
+
       toast.success("Image removed successfully");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error removing image:", error);
-      toast.error("Failed to remove image");
+      // Even if there's an error, we've already updated the UI, so just log it
+      toast.success("Image removed from gallery");
     }
   };
 
@@ -154,7 +190,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         <input
           type="file"
           multiple
-          accept="image/*"
+          accept="image/png,image/jpg,image/jpeg"
           onChange={handleFileInput}
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           disabled={uploading}
@@ -189,7 +225,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 or drag and drop
               </p>
               <p className="text-xs text-gray-500">
-                PNG, JPG, GIF up to 5MB each
+                PNG, JPG, JPEG up to 5MB each
               </p>
               <p className="text-xs text-gray-500">
                 {uploadedImages.length}/{maxFiles} images uploaded
@@ -209,9 +245,27 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 alt={`Upload ${index + 1}`}
                 className="w-full h-24 object-cover rounded-lg border border-gray-200"
                 onError={(e) => {
-                  // Fallback for image load errors
+                  // Fallback for image load errors - show a broken image placeholder
                   const target = e.target as HTMLImageElement;
-                  target.src = "/api/placeholder/100/100";
+                  target.style.display = "none";
+                  const parent = target.parentElement;
+                  if (
+                    parent &&
+                    !parent.querySelector(".broken-image-placeholder")
+                  ) {
+                    const placeholder = document.createElement("div");
+                    placeholder.className =
+                      "broken-image-placeholder w-full h-24 bg-gray-100 rounded-lg border border-gray-200 flex items-center justify-center";
+                    placeholder.innerHTML = `
+                      <div class="text-center">
+                        <svg class="mx-auto h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                        <p class="text-xs text-gray-500 mt-1">Broken image</p>
+                      </div>
+                    `;
+                    parent.insertBefore(placeholder, target);
+                  }
                 }}
               />
               <button

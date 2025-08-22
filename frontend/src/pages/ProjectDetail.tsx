@@ -97,12 +97,17 @@ const ProjectDetail: React.FC = () => {
     );
   }
 
-  const allImages = constructImageUrls(
-    [
-      ...(project.images || []),
-      ...(project.image ? [project.image] : []),
-    ].filter(Boolean)
+  // Combine images and remove duplicates
+  const uniqueImageUrls = Array.from(
+    new Set(
+      [
+        ...(project.images || []),
+        ...(project.image ? [project.image] : []),
+      ].filter(Boolean)
+    )
   );
+
+  const allImages = constructImageUrls(uniqueImageUrls);
 
   return (
     <div className="min-h-screen bg-gray-50">

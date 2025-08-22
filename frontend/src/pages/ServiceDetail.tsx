@@ -63,10 +63,14 @@ const ServiceDetail: React.FC = () => {
     );
   }
 
-  const allImages = [
-    ...(service.image ? [service.image] : []),
-    ...service.images,
-  ].filter(Boolean);
+  // Combine images and remove duplicates
+  const allImages = Array.from(
+    new Set(
+      [...(service.image ? [service.image] : []), ...service.images].filter(
+        Boolean
+      )
+    )
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
