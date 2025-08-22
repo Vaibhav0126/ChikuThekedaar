@@ -251,7 +251,7 @@ const About: React.FC = () => {
                     <div className="flex space-x-3">
                       {/* LinkedIn */}
                       <a
-                        href="https://www.linkedin.com/in/vaibhav-chhikara"
+                        href="https://linkedin.com/in/vaibhav-27singh"
                         className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
                         aria-label="LinkedIn"
                       >
