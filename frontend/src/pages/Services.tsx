@@ -140,10 +140,6 @@ const Services: React.FC = () => {
                         {service.description}
                       </p>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-500">
-                          Added:{" "}
-                          {new Date(service.createdAt).toLocaleDateString()}
-                        </span>
                         <Link
                           to={`/services/${service._id}`}
                           className="group/btn bg-gradient-to-r from-accent-orange-500 to-accent-orange-600 text-white px-6 py-3 rounded-xl hover:from-accent-orange-600 hover:to-accent-orange-700 transition-all duration-300 inline-flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full justify-center"
