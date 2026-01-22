@@ -272,7 +272,7 @@ const About: React.FC = () => {
             <div className="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="relative overflow-hidden">
                 <img
-                  src={require("../assets/images/Rim.jpg")}
+                  src={require("../assets/images/Rim.jpeg")}
                   alt="Rim"
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
