@@ -272,8 +272,8 @@ const About: React.FC = () => {
             <div className="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="relative overflow-hidden">
                 <img
-                  src={require("../assets/images/kuki.jpg")}
-                  alt="Saijal"
+                  src={require("../assets/images/Rim.jpg")}
+                  alt="Rim"
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -282,12 +282,12 @@ const About: React.FC = () => {
                 <div className="mb-3">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                     <h3 className="text-xl font-semibold mb-2 sm:mb-0">
-                      Saijal
+                      Rimjhim Keer
                     </h3>
                     <div className="flex space-x-3">
                       {/* LinkedIn */}
                       <a
-                        href="https://in.linkedin.com/in/"
+                        href="https://www.linkedin.com/in/rimjhimkeer/"
                         className="text-accent-orange-500 hover:text-accent-orange-400 transition-colors"
                         aria-label="LinkedIn"
                       >
@@ -295,12 +295,12 @@ const About: React.FC = () => {
                       </a>
                     </div>
                   </div>
-                  <p className="text-primary-600 mb-3">Legal Advisor</p>
+                  <p className="text-primary-600 mb-3">UI/UX Designer</p>
                 </div>
                 <p className="text-gray-600">
-                  An excellent lawyer with exceptional legal expertise and a
-                  sharp analytical mind. Provides comprehensive legal guidance
-                  with remarkable attention to detail.
+                  A creative UI/UX designer who brings innovative design solutions
+                  to life. Crafts intuitive and visually appealing user experiences
+                  with a keen eye for detail and modern design principles.
                 </p>
               </div>
             </div>
