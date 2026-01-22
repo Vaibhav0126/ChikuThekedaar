@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { ReactComponent as LocationIcon } from "../assets/logos/location.svg";
 import { ReactComponent as PhoneIcon } from "../assets/logos/phone.svg";
 import { ReactComponent as EmailIcon } from "../assets/logos/email.svg";
-import { ReactComponent as LinkedInIcon } from "../assets/logos/linkedin.svg";
 import { ReactComponent as InstagramIcon } from "../assets/logos/instagram.svg";
 
 const Footer: React.FC = () => {
