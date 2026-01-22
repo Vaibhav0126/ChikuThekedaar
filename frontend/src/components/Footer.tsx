@@ -40,13 +40,14 @@ const Footer: React.FC = () => {
               >
                 <InstagramIcon className="h-5 w-5 text-gray-300 group-hover:text-white transition-colors duration-300" />
               </a>
-              <a
-                href="#"
+              {/* LinkedIn link - Add your LinkedIn URL here when available */}
+              {/* <a
+                href="https://www.linkedin.com/company/your-company"
                 className="group bg-gray-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-blue-700 p-3 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon className="h-5 w-5 text-gray-300 group-hover:text-white transition-colors duration-300" />
-              </a>
+              </a> */}
             </div>
           </div>
 
